@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: Hotel API
+  description: "Hotel API has functionalities for checking room avaibility, booing\
+    \ and cancelling rooms "
+  version: 1.1.0
+servers:
+- url: https://virtserver.swaggerhub.com/trainingorg/HotelAPI/1.1.0
+  description: Mock Server
+- url: http://localhost:8080/api/v1
+  description: Test Server
+tags:
+- name: Hotel
+paths:
+  /room/cancel/{howMany}:
+    get:
+      tags:
+      - Hotel
+      summary: Cancel room
+      description: Cancel room
+      parameters:
+      - name: howMany
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          example: 2
+          default: 2
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 2 rooms cancelled
+                default: 2 rooms cancelled
+  /room/book/{howMany}:
+    get:
+      tags:
+      - Hotel
+      summary: Book room
+      description: Book room
+      parameters:
+      - name: howMany
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          example: 2
+          default: 2
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 2 rooms booked
+                default: 2 rooms booked
+  /room/availability:
+    get:
+      tags:
+      - Hotel
+      summary: Fetch available rooms based on search
+      description: Fetch available rooms
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 100 rooms available
+                default: 100 rooms available
+components: {}

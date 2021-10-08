@@ -12,6 +12,31 @@ servers:
 tags:
 - name: Hotel
 paths:
+  /room/cancel/{howMany}:
+    get:
+      tags:
+      - Hotel
+      summary: Cancel room
+      description: Cancel room
+      parameters:
+      - name: howMany
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          example: 2
+          default: 2
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 2 rooms cancelled
+                default: 2 rooms cancelled
   /room/book/{howMany}:
     get:
       tags:
